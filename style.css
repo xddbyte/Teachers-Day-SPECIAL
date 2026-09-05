@@ -1,0 +1,924 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #05070c;
+    color: white;
+}
+
+
+/* =========================
+   GENERAL SCENES
+========================= */
+
+.scene {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================
+   SCENE 1
+========================= */
+
+#scene1 {
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #1c2a45 0%,
+            #0b101c 42%,
+            #030408 100%
+        );
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+
+    background-size: 100px 100px, 160px 160px;
+
+    background-position:
+        20px 30px,
+        80px 100px;
+
+    opacity: 0.25;
+
+    animation: starsMove 20s linear infinite;
+}
+
+@keyframes starsMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100px);
+    }
+}
+
+
+.intro {
+    position: relative;
+    z-index: 5;
+
+    text-align: center;
+
+    transition: 1s ease;
+}
+
+.subtitle {
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    opacity: 0.55;
+
+    margin-bottom: 25px;
+}
+
+.intro h1 {
+    font-size: clamp(45px, 7vw, 90px);
+
+    font-weight: 400;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    font-size: 17px;
+
+    color: #b9c0cc;
+
+    margin-bottom: 35px;
+}
+
+
+#openBtn {
+    border: 1px solid rgba(255,255,255,0.45);
+
+    background: rgba(255,255,255,0.05);
+
+    color: white;
+
+    padding: 16px 35px;
+
+    border-radius: 50px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition: 0.4s ease;
+
+    backdrop-filter: blur(10px);
+}
+
+#openBtn:hover {
+    background: white;
+
+    color: #07090e;
+
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.25);
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 330px;
+    height: 220px;
+
+    transform:
+        translateY(180px)
+        scale(0.5)
+        rotate(-5deg);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.letter.show {
+    animation: letterOpen 1.7s ease forwards;
+}
+
+@keyframes letterOpen {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(180px)
+            scale(0.5)
+            rotate(-5deg);
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0deg);
+    }
+}
+
+.paper {
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8e8,
+            #eadfc8
+        );
+
+    color: #28231b;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.6);
+}
+
+.paper span {
+    color: #a98b50;
+
+    font-size: 20px;
+}
+
+.paper h2 {
+    margin: 12px 0;
+
+    font-weight: 400;
+}
+
+.paper p {
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.line {
+    width: 50px;
+    height: 1px;
+
+    background: #a98b50;
+
+    margin: 15px auto;
+}
+
+.paper .small-text {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   SCENE 2
+========================= */
+
+#scene2 {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #070b18 0%,
+            #162a47 45%,
+            #536b82 100%
+        );
+
+    overflow: hidden;
+}
+
+.sky-stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(white 1px, transparent 1px);
+
+    background-size: 90px 90px;
+
+    opacity: 0.35;
+}
+
+.moon {
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    background: #fff4d0;
+
+    right: 12%;
+    top: 12%;
+
+    box-shadow:
+        0 0 50px rgba(255,244,208,0.4);
+}
+
+.journey-title {
+    position: absolute;
+
+    top: 10%;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    opacity: 0.55;
+}
+
+
+/* Clouds */
+
+.cloud {
+    position: absolute;
+
+    width: 280px;
+    height: 55px;
+
+    background: rgba(255,255,255,0.08);
+
+    border-radius: 100px;
+
+    filter: blur(6px);
+}
+
+.cloud1 {
+    left: -100px;
+    top: 25%;
+
+    animation: cloudMove 18s linear infinite;
+}
+
+.cloud2 {
+    right: -150px;
+    top: 45%;
+
+    animation: cloudMove2 22s linear infinite;
+}
+
+.cloud3 {
+    left: 20%;
+    top: 70%;
+
+    opacity: 0.5;
+}
+
+@keyframes cloudMove {
+
+    from {
+        left: -300px;
+    }
+
+    to {
+        left: 110%;
+    }
+}
+
+@keyframes cloudMove2 {
+
+    from {
+        right: -300px;
+    }
+
+    to {
+        right: 110%;
+    }
+}
+
+
+/* Plane */
+
+.plane {
+    position: absolute;
+
+    left: -150px;
+    top: 70%;
+
+    font-size: 75px;
+
+    filter:
+        drop-shadow(
+            0 15px 15px rgba(0,0,0,0.4)
+        );
+}
+
+.plane.fly {
+    animation:
+        planeFlight 4.5s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+@keyframes planeFlight {
+
+    0% {
+        left: -150px;
+        top: 70%;
+
+        transform:
+            rotate(-15deg)
+            scale(0.7);
+    }
+
+    35% {
+        left: 30%;
+        top: 30%;
+
+        transform:
+            rotate(-8deg)
+            scale(1);
+    }
+
+    70% {
+        left: 60%;
+        top: 25%;
+
+        transform:
+            rotate(5deg)
+            scale(0.9);
+    }
+
+    100% {
+        left: 82%;
+        top: 58%;
+
+        transform:
+            rotate(10deg)
+            scale(0.65);
+    }
+}
+
+
+/* =========================
+   SCENE 3
+========================= */
+
+#scene3 {
+
+    align-items: flex-end;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #060914,
+            #18283e 55%,
+            #090b10
+        );
+
+    overflow: hidden;
+}
+
+.school {
+
+    position: relative;
+
+    width: min(900px, 90vw);
+
+    height: 58vh;
+
+    transform: translateY(110%);
+
+    transition:
+        transform 1.5s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+#scene3.active .school {
+    transform: translateY(0);
+}
+
+
+/* Roof */
+
+.roof {
+
+    position: absolute;
+
+    width: 105%;
+    height: 70px;
+
+    left: -2.5%;
+    top: 0;
+
+    background:
+        linear-gradient(
+            #54483b,
+            #30271f
+        );
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 0,
+            100% 100%
+        );
+
+    z-index: 3;
+}
+
+
+/* Building */
+
+.school-body {
+
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+
+    bottom: 0;
+
+    height: 90%;
+
+    background:
+        linear-gradient(
+            #c8b99b,
+            #a79679
+        );
+
+    border:
+        7px solid #6c5c47;
+
+    box-shadow:
+        0 -20px 80px rgba(0,0,0,0.5);
+}
+
+.school-sign {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 16%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #282217;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 22px;
+
+    letter-spacing: 5px;
+}
+
+
+/* Windows */
+
+.window {
+
+    position: absolute;
+
+    bottom: 25%;
+
+    width: 85px;
+    height: 110px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #20384c,
+            #0b1723
+        );
+
+    border:
+        8px solid #685944;
+
+    box-shadow:
+        inset 0 0 25px rgba(120,190,230,0.4);
+}
+
+.w1 {
+    left: 10%;
+}
+
+.w2 {
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.w3 {
+    right: 10%;
+}
+
+
+/* Door */
+
+.door {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 120px;
+    height: 180px;
+
+    background: #443428;
+
+    border:
+        8px solid #66523d;
+}
+
+.door-handle {
+
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #c7a75d;
+
+    right: 15px;
+    top: 50%;
+}
+
+
+/* =========================
+   BOARD
+========================= */
+
+.board {
+
+    position: absolute;
+
+    z-index: 20;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.2);
+
+    width: min(700px, 80vw);
+
+    padding: 40px 30px;
+
+    background:
+        radial-gradient(
+            circle,
+            #1d3029,
+            #0d1915
+        );
+
+    border:
+        10px solid #634b32;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.7),
+        inset 0 0 40px rgba(0,0,0,0.5);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transition:
+        1.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.board.show {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+.board-stars {
+
+    color: #d6bb70;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 15px;
+}
+
+.board h1 {
+
+    font-size:
+        clamp(28px, 4vw, 52px);
+
+    font-weight: 400;
+
+    color: #f1e8d2;
+
+    line-height: 1.2;
+}
+
+.board p {
+
+    margin-top: 20px;
+
+    font-size:
+        clamp(17px, 2vw, 24px);
+
+    color: #d7c58f;
+
+    line-height: 1.5;
+}
+
+.board-line {
+
+    width: 80px;
+    height: 1px;
+
+    background: #c4a75e;
+
+    margin: 20px auto;
+}
+
+.board span {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.6;
+}
+
+
+/* =========================
+   SCENE 4
+========================= */
+
+#scene4 {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #40351e 0%,
+            #17140d 35%,
+            #050607 75%
+        );
+}
+
+.final-glow {
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(218,183,94,0.16),
+            transparent 70%
+        );
+
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,100% {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.final-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    max-width: 850px;
+
+    padding: 30px;
+
+    animation: finalAppear 2s ease;
+}
+
+@keyframes finalAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.final-small {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    color: #c7aa65;
+
+    margin-bottom: 25px;
+}
+
+.final-content h1 {
+
+    font-size:
+        clamp(45px, 7vw, 90px);
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    letter-spacing: 2px;
+}
+
+.final-content h1 span {
+
+    color: #d6b86c;
+}
+
+.final-message {
+
+    margin-top: 30px;
+
+    color: #c2c2c2;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+.divider {
+
+    width: 70px;
+    height: 1px;
+
+    background: #b89751;
+
+    margin: 30px auto;
+}
+
+.respect {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #c7aa65;
+
+    opacity: 0.8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .intro h1 {
+        font-size: 45px;
+    }
+
+    .school {
+        width: 95vw;
+    }
+
+    .board {
+        width: 85vw;
+        padding: 25px 15px;
+    }
+
+    .window {
+        width: 55px;
+        height: 80px;
+    }
+
+    .door {
+        width: 80px;
+        height: 130px;
+    }
+
+}
