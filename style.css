@@ -4,114 +4,149 @@
     box-sizing: border-box;
 }
 
+
 html,
 body {
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
-    font-family: Georgia, "Times New Roman", serif;
-    background: #05070c;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    background: #05070d;
+
     color: white;
 }
 
 
-/* =========================
-   GENERAL SCENES
-========================= */
+/* =================================
+   SCENES
+================================= */
 
 .scene {
+
     position: fixed;
+
     inset: 0;
 
     width: 100%;
     height: 100vh;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     opacity: 0;
+
     visibility: hidden;
 
     transition:
-        opacity 1.5s ease,
-        visibility 1.5s ease;
+        opacity 1.4s ease,
+        visibility 1.4s ease;
 }
 
+
 .scene.active {
+
     opacity: 1;
+
     visibility: visible;
 }
 
 
-/* =========================
+/* =================================
    SCENE 1
-========================= */
+================================= */
 
 #scene1 {
+
     background:
+
         radial-gradient(
-            circle at 50% 45%,
-            #1c2a45 0%,
-            #0b101c 42%,
-            #030408 100%
+            circle at center,
+            #1b2943 0%,
+            #0a0f1b 45%,
+            #020306 100%
         );
 }
 
+
+/* Stars */
+
 .stars {
+
     position: absolute;
+
     inset: 0;
 
     background-image:
-        radial-gradient(white 1px, transparent 1px),
-        radial-gradient(white 1px, transparent 1px);
 
-    background-size: 100px 100px, 160px 160px;
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        );
 
-    background-position:
-        20px 30px,
-        80px 100px;
+    background-size: 90px 90px;
 
-    opacity: 0.25;
+    opacity: .3;
 
-    animation: starsMove 20s linear infinite;
+    animation:
+        starMove
+        20s
+        linear
+        infinite;
 }
 
-@keyframes starsMove {
+
+@keyframes starMove {
 
     from {
         transform: translateY(0);
     }
 
     to {
-        transform: translateY(-100px);
+        transform: translateY(-90px);
     }
+
 }
 
 
+/* Intro */
+
 .intro {
+
     position: relative;
+
     z-index: 5;
 
     text-align: center;
-
-    transition: 1s ease;
 }
 
+
 .subtitle {
+
     font-family: Arial, sans-serif;
 
     font-size: 11px;
 
     letter-spacing: 6px;
 
-    opacity: 0.55;
+    opacity: .55;
 
     margin-bottom: 25px;
 }
 
+
 .intro h1 {
-    font-size: clamp(45px, 7vw, 90px);
+
+    font-size:
+        clamp(45px, 7vw, 90px);
 
     font-weight: 400;
 
@@ -120,25 +155,34 @@ body {
     margin-bottom: 20px;
 }
 
-.intro-text {
-    font-size: 17px;
 
-    color: #b9c0cc;
+.intro p {
+
+    color: #b8c0ce;
+
+    font-size: 17px;
 
     margin-bottom: 35px;
 }
 
 
+/* Button */
+
 #openBtn {
-    border: 1px solid rgba(255,255,255,0.45);
 
-    background: rgba(255,255,255,0.05);
-
-    color: white;
-
-    padding: 16px 35px;
+    padding:
+        16px 36px;
 
     border-radius: 50px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    background:
+        rgba(255,255,255,.05);
+
+    color: white;
 
     font-family: Arial, sans-serif;
 
@@ -148,223 +192,277 @@ body {
 
     cursor: pointer;
 
-    transition: 0.4s ease;
-
-    backdrop-filter: blur(10px);
+    transition: .4s ease;
 }
 
+
 #openBtn:hover {
+
     background: white;
 
-    color: #07090e;
+    color: #05070d;
 
     transform: scale(1.07);
 
     box-shadow:
-        0 0 30px rgba(255,255,255,0.25);
+        0 0 35px
+        rgba(255,255,255,.3);
 }
 
 
-/* =========================
+/* =================================
    LETTER
-========================= */
+================================= */
 
 .letter {
+
     position: absolute;
 
     z-index: 10;
 
     width: 330px;
+
     height: 220px;
+
+    opacity: 0;
 
     transform:
         translateY(180px)
-        scale(0.5)
-        rotate(-5deg);
-
-    opacity: 0;
+        scale(.5)
+        rotate(-6deg);
 
     pointer-events: none;
 }
 
+
 .letter.show {
-    animation: letterOpen 1.7s ease forwards;
+
+    animation:
+        letterAppear
+        1.7s
+        ease
+        forwards;
 }
 
-@keyframes letterOpen {
+
+@keyframes letterAppear {
 
     0% {
+
         opacity: 0;
+
         transform:
             translateY(180px)
-            scale(0.5)
-            rotate(-5deg);
+            scale(.5)
+            rotate(-6deg);
     }
 
     60% {
+
         opacity: 1;
     }
 
     100% {
+
         opacity: 1;
+
         transform:
             translateY(0)
             scale(1)
             rotate(0deg);
     }
+
 }
 
+
 .paper {
+
     width: 100%;
     height: 100%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff8e8,
-            #eadfc8
-        );
-
-    color: #28231b;
 
     padding: 30px;
 
     text-align: center;
 
+    color: #29241c;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #fff8e8,
+            #e9dec6
+        );
+
     box-shadow:
-        0 25px 70px rgba(0,0,0,0.6);
+        0 25px 70px
+        rgba(0,0,0,.6);
 }
 
-.paper span {
-    color: #a98b50;
 
-    font-size: 20px;
+.paper .star {
+
+    color: #aa8b4c;
+
+    font-size: 22px;
 }
+
 
 .paper h2 {
+
     margin: 12px 0;
 
     font-weight: 400;
 }
 
+
 .paper p {
+
     font-size: 14px;
 
     line-height: 1.6;
 }
 
+
 .line {
-    width: 50px;
+
+    width: 60px;
+
     height: 1px;
 
-    background: #a98b50;
+    background: #aa8b4c;
 
-    margin: 15px auto;
+    margin: 17px auto;
 }
 
-.paper .small-text {
-    font-size: 11px;
+
+.paper small {
 
     letter-spacing: 2px;
 }
 
 
-/* =========================
+/* =================================
    SCENE 2
-========================= */
+================================= */
 
 #scene2 {
 
     background:
+
         linear-gradient(
             to bottom,
-            #070b18 0%,
-            #162a47 45%,
-            #536b82 100%
+            #060a17,
+            #142945 45%,
+            #64778a 100%
         );
 
     overflow: hidden;
 }
 
-.sky-stars {
+
+/* Sky stars */
+
+.skyStars {
+
     position: absolute;
+
     inset: 0;
 
     background-image:
-        radial-gradient(white 1px, transparent 1px);
 
-    background-size: 90px 90px;
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        );
 
-    opacity: 0.35;
+    background-size: 80px 80px;
+
+    opacity: .3;
 }
 
+
+/* Moon */
+
 .moon {
+
     position: absolute;
 
     width: 100px;
+
     height: 100px;
 
     border-radius: 50%;
 
-    background: #fff4d0;
+    background: #fff4d1;
 
     right: 12%;
+
     top: 12%;
 
     box-shadow:
-        0 0 50px rgba(255,244,208,0.4);
-}
 
-.journey-title {
-    position: absolute;
-
-    top: 10%;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-
-    letter-spacing: 6px;
-
-    opacity: 0.55;
+        0 0 60px
+        rgba(255,244,209,.45);
 }
 
 
 /* Clouds */
 
 .cloud {
+
     position: absolute;
 
-    width: 280px;
-    height: 55px;
+    width: 300px;
 
-    background: rgba(255,255,255,0.08);
+    height: 60px;
 
     border-radius: 100px;
 
-    filter: blur(6px);
+    background:
+        rgba(255,255,255,.09);
+
+    filter: blur(7px);
 }
+
 
 .cloud1 {
-    left: -100px;
+
     top: 25%;
 
-    animation: cloudMove 18s linear infinite;
+    left: -300px;
+
+    animation:
+        cloudMove
+        18s
+        linear
+        infinite;
 }
+
 
 .cloud2 {
-    right: -150px;
+
     top: 45%;
 
-    animation: cloudMove2 22s linear infinite;
+    right: -300px;
+
+    animation:
+        cloudMove2
+        22s
+        linear
+        infinite;
 }
+
 
 .cloud3 {
-    left: 20%;
+
     top: 70%;
 
-    opacity: 0.5;
+    left: 20%;
+
+    opacity: .4;
 }
+
 
 @keyframes cloudMove {
 
@@ -375,7 +473,9 @@ body {
     to {
         left: 110%;
     }
+
 }
+
 
 @keyframes cloudMove2 {
 
@@ -386,45 +486,78 @@ body {
     to {
         right: 110%;
     }
+
+}
+
+
+/* Journey text */
+
+.journeyText {
+
+    position: absolute;
+
+    top: 10%;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    opacity: .55;
 }
 
 
 /* Plane */
 
 .plane {
+
     position: absolute;
 
     left: -150px;
+
     top: 70%;
 
     font-size: 75px;
 
     filter:
+
         drop-shadow(
-            0 15px 15px rgba(0,0,0,0.4)
+            0 15px 15px
+            rgba(0,0,0,.45)
         );
 }
 
+
 .plane.fly {
+
     animation:
-        planeFlight 4.5s
+
+        planeFlight
+        4.5s
         cubic-bezier(.2,.8,.2,1)
         forwards;
 }
 
+
 @keyframes planeFlight {
 
     0% {
+
         left: -150px;
+
         top: 70%;
 
         transform:
             rotate(-15deg)
-            scale(0.7);
+            scale(.7);
     }
 
+
     35% {
+
         left: 30%;
+
         top: 30%;
 
         transform:
@@ -432,62 +565,79 @@ body {
             scale(1);
     }
 
+
     70% {
+
         left: 60%;
+
         top: 25%;
 
         transform:
             rotate(5deg)
-            scale(0.9);
+            scale(.9);
     }
 
+
     100% {
+
         left: 82%;
+
         top: 58%;
 
         transform:
             rotate(10deg)
-            scale(0.65);
+            scale(.65);
     }
+
 }
 
 
-/* =========================
+/* =================================
    SCENE 3
-========================= */
+================================= */
 
 #scene3 {
 
     align-items: flex-end;
 
     background:
+
         linear-gradient(
             to bottom,
-            #060914,
-            #18283e 55%,
-            #090b10
+            #050812,
+            #1b2b40 55%,
+            #07090c 100%
         );
 
     overflow: hidden;
 }
 
+
+/* School */
+
 .school {
 
     position: relative;
 
-    width: min(900px, 90vw);
+    width:
+        min(900px, 90vw);
 
     height: 58vh;
 
-    transform: translateY(110%);
+    transform:
+        translateY(110%);
 
     transition:
+
         transform 1.5s
         cubic-bezier(.2,.8,.2,1);
 }
 
+
 #scene3.active .school {
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 
@@ -497,68 +647,77 @@ body {
 
     position: absolute;
 
-    width: 105%;
-    height: 70px;
+    z-index: 5;
 
-    left: -2.5%;
     top: 0;
 
+    left: -2.5%;
+
+    width: 105%;
+
+    height: 75px;
+
     background:
+
         linear-gradient(
-            #54483b,
-            #30271f
+            #55493b,
+            #302820
         );
 
     clip-path:
+
         polygon(
             0 100%,
             50% 0,
             100% 100%
         );
-
-    z-index: 3;
 }
 
 
-/* Building */
+/* School building */
 
-.school-body {
+.schoolBody {
 
     position: absolute;
 
-    left: 5%;
-    right: 5%;
-
     bottom: 0;
 
-    height: 90%;
+    left: 5%;
 
-    background:
-        linear-gradient(
-            #c8b99b,
-            #a79679
-        );
+    right: 5%;
+
+    height: 90%;
 
     border:
         7px solid #6c5c47;
 
+    background:
+
+        linear-gradient(
+            #c9ba9b,
+            #a7977b
+        );
+
     box-shadow:
-        0 -20px 80px rgba(0,0,0,0.5);
+
+        0 -20px 80px
+        rgba(0,0,0,.5);
 }
 
-.school-sign {
+
+/* School name */
+
+.schoolName {
 
     position: absolute;
 
-    z-index: 5;
+    top: 12%;
 
-    top: 16%;
+    width: 100%;
 
-    left: 50%;
+    text-align: center;
 
-    transform: translateX(-50%);
-
-    color: #282217;
+    color: #2a241a;
 
     font-family: Arial, sans-serif;
 
@@ -577,33 +736,42 @@ body {
     bottom: 25%;
 
     width: 85px;
+
     height: 110px;
 
     background:
+
         linear-gradient(
             135deg,
-            #20384c,
-            #0b1723
+            #203a4f,
+            #0a1722
         );
 
     border:
         8px solid #685944;
 
     box-shadow:
-        inset 0 0 25px rgba(120,190,230,0.4);
+
+        inset 0 0 25px
+        rgba(120,190,230,.35);
 }
 
-.w1 {
+
+.window1 {
     left: 10%;
 }
 
-.w2 {
+
+.window2 {
+
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 }
 
-.w3 {
+
+.window3 {
     right: 10%;
 }
 
@@ -618,36 +786,41 @@ body {
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: 120px;
+
     height: 180px;
 
-    background: #443428;
+    background: #453529;
 
     border:
         8px solid #66523d;
 }
 
-.door-handle {
+
+.handle {
 
     position: absolute;
 
+    right: 15px;
+
+    top: 50%;
+
     width: 9px;
+
     height: 9px;
 
     border-radius: 50%;
 
-    background: #c7a75d;
-
-    right: 15px;
-    top: 50%;
+    background: #d0ae5c;
 }
 
 
-/* =========================
-   BOARD
-========================= */
+/* =================================
+   TEACHER'S DAY BOARD
+================================= */
 
 .board {
 
@@ -655,49 +828,58 @@ body {
 
     z-index: 20;
 
-    left: 50%;
     top: 48%;
 
+    left: 50%;
+
+    width:
+        min(700px, 80vw);
+
+    padding:
+        40px 30px;
+
+    text-align: center;
+
+    opacity: 0;
+
     transform:
-        translate(-50%, -50%)
-        scale(0.2);
-
-    width: min(700px, 80vw);
-
-    padding: 40px 30px;
+        translate(-50%,-50%)
+        scale(.2);
 
     background:
+
         radial-gradient(
             circle,
             #1d3029,
-            #0d1915
+            #0c1713
         );
 
     border:
         10px solid #634b32;
 
     box-shadow:
-        0 20px 70px rgba(0,0,0,0.7),
-        inset 0 0 40px rgba(0,0,0,0.5);
 
-    text-align: center;
-
-    opacity: 0;
+        0 20px 70px
+        rgba(0,0,0,.7);
 
     transition:
-        1.5s cubic-bezier(.2,.8,.2,1);
+
+        1.5s
+        cubic-bezier(.2,.8,.2,1);
 }
+
 
 .board.show {
 
     opacity: 1;
 
     transform:
-        translate(-50%, -50%)
+        translate(-50%,-50%)
         scale(1);
 }
 
-.board-stars {
+
+.boardStars {
 
     color: #d6bb70;
 
@@ -706,33 +888,37 @@ body {
     margin-bottom: 15px;
 }
 
+
 .board h1 {
 
     font-size:
-        clamp(28px, 4vw, 52px);
+        clamp(28px,4vw,52px);
 
     font-weight: 400;
 
-    color: #f1e8d2;
-
     line-height: 1.2;
+
+    color: #f2e9d4;
 }
+
 
 .board p {
 
     margin-top: 20px;
 
-    font-size:
-        clamp(17px, 2vw, 24px);
+    color: #d8c68f;
 
-    color: #d7c58f;
+    font-size:
+        clamp(17px,2vw,24px);
 
     line-height: 1.5;
 }
 
-.board-line {
+
+.boardLine {
 
     width: 80px;
+
     height: 1px;
 
     background: #c4a75e;
@@ -740,7 +926,8 @@ body {
     margin: 20px auto;
 }
 
-.board span {
+
+.board small {
 
     font-family: Arial, sans-serif;
 
@@ -748,153 +935,13 @@ body {
 
     letter-spacing: 4px;
 
-    opacity: 0.6;
+    opacity: .6;
 }
 
 
-/* =========================
-   SCENE 4
-========================= */
-
-#scene4 {
-
-    background:
-        radial-gradient(
-            circle at center,
-            #40351e 0%,
-            #17140d 35%,
-            #050607 75%
-        );
-}
-
-.final-glow {
-
-    position: absolute;
-
-    width: 450px;
-    height: 450px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(218,183,94,0.16),
-            transparent 70%
-        );
-
-    animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-
-    0%,100% {
-        transform: scale(0.9);
-        opacity: 0.5;
-    }
-
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-}
-
-.final-content {
-
-    position: relative;
-
-    z-index: 2;
-
-    text-align: center;
-
-    max-width: 850px;
-
-    padding: 30px;
-
-    animation: finalAppear 2s ease;
-}
-
-@keyframes finalAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.final-small {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-
-    letter-spacing: 6px;
-
-    color: #c7aa65;
-
-    margin-bottom: 25px;
-}
-
-.final-content h1 {
-
-    font-size:
-        clamp(45px, 7vw, 90px);
-
-    font-weight: 400;
-
-    line-height: 1.1;
-
-    letter-spacing: 2px;
-}
-
-.final-content h1 span {
-
-    color: #d6b86c;
-}
-
-.final-message {
-
-    margin-top: 30px;
-
-    color: #c2c2c2;
-
-    font-size: 18px;
-
-    line-height: 1.8;
-}
-
-.divider {
-
-    width: 70px;
-    height: 1px;
-
-    background: #b89751;
-
-    margin: 30px auto;
-}
-
-.respect {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #c7aa65;
-
-    opacity: 0.8;
-}
-
-
-/* =========================
+/* =================================
    MOBILE
-========================= */
+================================= */
 
 @media(max-width:600px) {
 
@@ -907,7 +954,7 @@ body {
     }
 
     .board {
-        width: 85vw;
+        width: 86vw;
         padding: 25px 15px;
     }
 
