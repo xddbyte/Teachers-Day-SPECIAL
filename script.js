@@ -1,78 +1,118 @@
-const openBtn = document.getElementById("openBtn");
+document.addEventListener("DOMContentLoaded", function () {
 
-const scene1 = document.getElementById("scene1");
-const scene2 = document.getElementById("scene2");
-const scene3 = document.getElementById("scene3");
-const scene4 = document.getElementById("scene4");
 
-const letter = document.getElementById("letter");
-const plane = document.getElementById("plane");
-const board = document.getElementById("board");
+    /* =========================
+       ELEMENTS
+    ========================== */
 
-function changeScene(scene) {
+    const openBtn =
+        document.getElementById("openBtn");
 
-    document.querySelectorAll(".scene").forEach(section => {
-        section.classList.remove("active");
+    const scene1 =
+        document.getElementById("scene1");
+
+    const scene2 =
+        document.getElementById("scene2");
+
+    const scene3 =
+        document.getElementById("scene3");
+
+    const letter =
+        document.getElementById("letter");
+
+    const plane =
+        document.getElementById("plane");
+
+    const board =
+        document.getElementById("board");
+
+
+    /* =========================
+       CHANGE SCENE
+    ========================== */
+
+    function changeScene(scene) {
+
+        document
+            .querySelectorAll(".scene")
+            .forEach(function(section) {
+
+                section.classList.remove("active");
+
+            });
+
+
+        scene.classList.add("active");
+    }
+
+
+    /* =========================
+       OPEN BUTTON
+    ========================== */
+
+    openBtn.addEventListener("click", function () {
+
+
+        /* Disable button */
+
+        openBtn.disabled = true;
+
+        openBtn.style.opacity = "0";
+
+        openBtn.style.pointerEvents = "none";
+
+
+        /* =========================
+           LETTER APPEARS
+        ========================== */
+
+        letter.classList.add("show");
+
+
+        /* =========================
+           MOVE TO SKY
+        ========================== */
+
+        setTimeout(function () {
+
+
+            changeScene(scene2);
+
+
+            /* Plane starts */
+
+            setTimeout(function () {
+
+                plane.classList.add("fly");
+
+            }, 400);
+
+
+        }, 2300);
+
+
+        /* =========================
+           ARRIVE AT SCHOOL
+        ========================== */
+
+        setTimeout(function () {
+
+            changeScene(scene3);
+
+        }, 6800);
+
+
+        /* =========================
+           REVEAL TEACHER'S DAY
+        ========================== */
+
+        setTimeout(function () {
+
+            board.classList.add("show");
+
+        }, 7900);
+
+
     });
-
-    scene.classList.add("active");
-}
-
-openBtn.addEventListener("click", () => {
-
-    openBtn.style.pointerEvents = "none";
-    openBtn.style.opacity = "0";
-
-    letter.classList.add("show");
-
-    setTimeout(() => {
-        changeScene(scene2);
-
-        setTimeout(() => {
-            plane.classList.add("fly");
-        }, 400);
-
-    }, 2300);
-
-    setTimeout(() => {
-        changeScene(scene3);
-    }, 6800);
-
-    setTimeout(() => {
-        board.classList.add("show");
-    }, 7900);
-
-    setTimeout(() => {
-        changeScene(scene4);
-    }, 11200);
-
-});
-openBtn.addEventListener("click", () => {
-
-    openBtn.style.pointerEvents = "none";
-    openBtn.style.opacity = "0";
-
-    letter.classList.add("show");
-
-    setTimeout(() => {
-        changeScene(scene2);
-
-        setTimeout(() => {
-            plane.classList.add("fly");
-        }, 400);
-
-    }, 2300);
-
-    setTimeout(() => {
-        changeScene(scene3);
-    }, 6800);
-
-    setTimeout(() => {
-        board.classList.add("show");
-    }, 7900);
-
-    setTimeout(() => {
-        changeScene(scene4);
-    }, 11200);
 
 });
